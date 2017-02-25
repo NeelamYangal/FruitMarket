@@ -15,7 +15,16 @@ Two Procedure are created
   ```
   
 - GetPrice: Which will give you price of each fruit.
-This query also included in script file.
+
+```sql
+SELECT Name, 
+	  CAST( FPM.PalletPrice AS FLOAT)/ (CAST(FPM.NoOfCases AS FLOAT) * CAST(FPCM.NoOfUnit AS FLOAT)) AS 'Price'
+			FROM Fruit F 
+			INNER JOIN FruitPalletMap FPM ON FPM.FruitId = F.Id
+			INNER JOIN FruitPalletCaseMap FPCM ON FPCM.PalletId = FPM.Id
+```
+
+
 
 Below is the Database diagram: 
 ![Database Digram](https://raw.githubusercontent.com/NeelamYangal/FruitMarket/master/FruitRepository.JPG)
